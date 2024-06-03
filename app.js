@@ -6,11 +6,14 @@ const postModel =require("./models/post") ;
 const bcrypt = require('bcrypt');
 const jwt =require('jsonwebtoken');
 const user = require('./models/user');
+const multerconfig =require("./config/multerconfig");
+const path=require('path');
 
 app.set('view engine', 'ejs');
 app.use (express.json());
 app.use(express.urlencoded({extended:true})); 
 app.use (cookieParser());
+app.use(express.static(path.join(__dirname ,"public")));
 
 app.get('/', ( req ,res) =>{
     res.render("index");
